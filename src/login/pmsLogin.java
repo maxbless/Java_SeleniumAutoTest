@@ -1,6 +1,6 @@
 package login;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,17 +17,20 @@ public class pmsLogin {
 
         //加载到指定URL
        navigation.to(pmsUrl);
+       driver.manage().window().setSize(new Dimension(1440,900));//设置窗口大小
 
        //获取输入框的id，并在输入框中输入用户名
        WebElement userNameInput = driver.findElement(By.id("username"));
        userNameInput.sendKeys("021181");
 
-       //获取输入框的id，并在输入框中输入密码
        WebElement pwdInput = driver.findElement(By.id("password"));
        pwdInput.sendKeys("123456");
 
-       //获取登录按钮的className,并点击
        WebElement loginBtn = driver.findElement(By.className("button"));
        loginBtn.click();
+
+       WebElement selectPrj = driver.findElement(By.xpath("//*[@data-row-id='31']"));
+       selectPrj.click();
    }
 }
+//tr data-row-id="31"
